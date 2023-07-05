@@ -87,6 +87,9 @@ export default function ({}: ThemeVariables) {
     fill: {
       flex: 1,
     },
+    startColor: {
+      backgroundColor: '#010107',
+    },
     fullSize: {
       height: '100%',
       width: '100%',

@@ -1,24 +1,16 @@
 import React from 'react';
-import { View, Image, DimensionValue } from 'react-native';
-import { useTheme } from '../../hooks';
-
+import { View, DimensionValue } from 'react-native';
+import Bavovna from '../../theme/assets/images/bavovna-classic.svg';
 type Props = {
   height?: DimensionValue;
   width?: DimensionValue;
   mode?: 'contain' | 'cover' | 'stretch' | 'repeat' | 'center';
 };
 
-const Brand = ({ height, width, mode }: Props) => {
-  const { Layout, Images } = useTheme();
-
+const Brand = ({ height, width }: Props) => {
   return (
     <View testID={'brand-img-wrapper'} style={{ height, width }}>
-      <Image
-        testID={'brand-img'}
-        style={Layout.fullSize}
-        source={Images.logo}
-        resizeMode={mode}
-      />
+      <Bavovna />
     </View>
   );
 };
