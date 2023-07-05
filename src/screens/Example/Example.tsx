@@ -146,13 +146,20 @@ const HeaderText = () => {
 };
 
 const BottomButton = () => {
+  const { Layout } = useTheme();
   const onPress = () => {};
   return (
     <View>
       <TouchableOpacity
         style={{
+          ...Layout.absolute,
+          left: 50,
+          top: 400,
+          width: 300,
           alignItems: 'center',
-          backgroundColor: '#DDDDDD',
+          backgroundColor: '#FFFDFA',
+          borderColor: '#F9CBFA',
+          borderWidth: 4,
           padding: 10,
         }}
         onPress={onPress}
@@ -190,6 +197,7 @@ const Example = () => {
       </FadeInViewLoop>
       <HeaderText />
       <Roulette />
+      <BottomButton />
       <FadeBavovnaAnimView>
         <Bavovna counter={bavovnaCounter} changeCounter={changeCounter} />
       </FadeBavovnaAnimView>
