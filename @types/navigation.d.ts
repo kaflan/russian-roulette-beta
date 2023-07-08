@@ -1,14 +1,14 @@
 import { NavigatorScreenParams } from '@react-navigation/native';
 import { StackScreenProps } from '@react-navigation/stack';
 
-export type MainParamsList = {
-  Home: undefined;
-};
-
 export type ApplicationStackParamList = {
-  Startup: undefined;
-  Main: NavigatorScreenParams<MainParamsList>;
+  Startup: NavigatorScreenParams;
+  Ending: NavigatorScreenParams;
 };
 
+export type EndingScreenNavigationProp = NativeStackNavigationProp<
+  ApplicationStackParamList,
+  'Ending'
+>;
 export type ApplicationScreenProps =
   StackScreenProps<ApplicationStackParamList>;
