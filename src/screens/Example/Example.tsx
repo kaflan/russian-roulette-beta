@@ -6,7 +6,7 @@ import React, {
   useState,
   Dispatch,
 } from 'react';
-import { View, Animated, Easing, TouchableOpacity, Text } from 'react-native';
+import { View, Animated, Easing, TouchableOpacity, Text, StyleSheet } from 'react-native';
 
 import { useTheme } from '../../hooks';
 import Star from '../../theme/assets/images/star.svg';
@@ -107,7 +107,7 @@ const Bavovna: FC<IBavovna> = ({ counter, changeCounter }) => {
 const Roulette = () => {
   const { Layout } = useTheme();
   const [spinAnim] = useState(new Animated.Value(0));
-  const spin = spinAnim.interpolate({
+  const rotateInterpolate = spinAnim.interpolate({
     inputRange: [0, 1],
     outputRange: ['0deg', '360deg'],
   });
@@ -116,16 +116,18 @@ const Roulette = () => {
     Animated.loop(
       Animated.timing(spinAnim, {
         toValue: 1,
-        duration: 950,
-        easing: Easing.linear,
-        useNativeDriver: true,
+        duration: 1500,
+        useNativeDriver: false,
       }),
     ).start();
   });
+  const animatedStyles = {
+    transform: [{ rotate: rotateInterpolate }],
+  };
 
   return (
     <View style={{ flex: 1, ...Layout.absolute, top: 150, left: 100 }}>
-      <Animated.View style={{ transform: [{ rotate: spin }] }}>
+      <Animated.View style={[styles.box, animatedStyles]}>
         <RouletteSVG />
       </Animated.View>
     </View>
@@ -204,5 +206,15 @@ const Example = () => {
     </View>
   );
 };
-
+const styles = StyleSheet.create({
+  container: {
+    flex: 1,
+    alignItems: 'center',
+    justifyContent: 'center',
+  },
+  box: {
+    width: 150,
+    height: 150,
+  },
+});
 export default Example;
